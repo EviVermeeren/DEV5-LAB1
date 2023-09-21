@@ -6,6 +6,11 @@ const inference = new HfInference(HF_ACCESS_TOKEN);
 
 const audio = document.querySelector("#audio");
 
+function playAudio() {
+  audio.src = "jay-z-ai.mp3";
+  audio.play();
+}
+
 // initialize Speechrecognition for webkit bowsers, prefix
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -46,6 +51,11 @@ recognition.onresult = function (event) {
 
   // update DOM
   document.querySelector("#commando").innerHTML = recognizedSpeech;
+
+  // Check if the recognized speech is 'speel muziek'
+  if (recognizedSpeech === "speel muziek") {
+    playAudio();
+  }
 };
 
 // the function that makes images
@@ -55,8 +65,8 @@ const makeImage = async (prompt) => {
     inputs: `${prompt}`,
     model: "stabilityai/stable-diffusion-2",
     parameters: {
-      negative_prompt: "blurry"
-    }
+      negative_prompt: "blurry",
+    },
   });
   document.querySelector("#hf").src = URL.createObjectURL(result);
   // hideLoading();
