@@ -10,6 +10,11 @@ function playAudio() {
   audio.src = "jay-z-ai.mp3";
   audio.play();
 }
+// Function to stop the audio
+function stopAudio() {
+  audio.pause();
+  audio.currentTime = 0; // Reset the audio to the beginning
+}
 
 // initialize Speechrecognition for webkit bowsers, prefix
 const SpeechRecognition =
