@@ -61,6 +61,10 @@ recognition.onresult = function (event) {
   if (recognizedSpeech === "speel muziek") {
     playAudio();
   }
+  // Check if the recognized speech is 'stop muziek'
+  if (recognizedSpeech === "stop muziek") {
+    stopAudio();
+  }
 };
 
 // the function that makes images
